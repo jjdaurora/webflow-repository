@@ -1,0 +1,246 @@
+<style>
+
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0 !important;
+	padding: 0 !important;
+	border: 0 !important;
+	font-size: 100% !important;
+	font: inherit !important;
+	vertical-align: baseline !important;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block !important;
+}
+body {
+	line-height: 1 !important;
+}
+ol, ul {
+	list-style: none !important;
+}
+blockquote, q {
+	quotes: none !important;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '' !important;
+	content: none !important;
+}
+table {
+	border-collapse: collapse !important;
+	border-spacing: 0 !important;
+}
+/*  */
+
+table {
+  border: 1px solid #ccc !important;
+  border-collapse: collapse !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  table-layout: fixed !important;
+}
+
+table caption {
+  font-size: 1.5em !important;
+  margin: .5em 0 .75em !important;
+}
+
+table tr {
+  background-color: #f8f8f8 !important;
+  border: 1px solid #ddd !important;
+  padding: .35em !important;
+}
+
+table th,
+table td {
+  padding: 1.25em !important;
+  text-align: center !important;
+}
+
+table th {
+  font-size: .85em !important;
+  letter-spacing: .1em !important;
+  text-transform: uppercase !important;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0 !important;
+  }
+
+  table caption {
+    font-size: 1.3em !important;
+  }
+  
+  table thead {
+    border: none !important;
+    clip: rect(0 0 0 0) !important;
+    height: 1px !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    width: 1px !important;
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd !important;
+    display: block !important;
+    margin-bottom: .625em !important;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd !important;
+    display: block !important;
+    font-size: .8em !important;
+    text-align: right !important;
+  }
+  
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label) !important;
+    */
+    content: attr(data-label) !important;
+    float: left !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+  }
+  
+  table td:last-child {
+    border-bottom: 0 !important;
+  }
+}
+
+/* general styling */
+body {
+  font-family:  "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", monospace !important;
+  line-height: 1.25 !important;
+}
+
+</style>
+
+<table>
+    <caption>POINTS TRACKING</caption>
+    <thead>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Question</th>
+        <th scope="col" style="width:5%">Y/N</th>
+        <th scope="col">Points</th>
+        <th scope="col">Balance</th>
+      </tr>
+    </thead>
+    <tbody class="points-table">
+    </tbody>
+    <script>
+        // document.getElementsByClassName("wrapper-section wf-section")[0].style.display = "block"
+
+const table = document.getElementsByClassName("points-table")[0]
+
+fetch('https://api.airtable.com/v0/appzvtjAGocJzOExM/Member.Bets?filterByFormula=NOT({Member ID}!="6224c66631ec7900044669db")', {
+         headers: {Authorization: 'Bearer keyzsJA5PVzv64Oem'}
+        })
+      .then( resp => resp.json() )
+      .then( json => {
+        json.records.forEach(f => {
+
+            let tr = document.createElement("tr")
+
+            table.appendChild(tr)
+
+            let betDate = new Date(f.fields['Selection Date'])
+            betDate.toISOString().split('T')[0]
+            const offset = betDate.getTimezoneOffset()
+            betDate = new Date(betDate.getTime() - (offset*60*1000))
+
+            let td_date = document.createElement("td")
+            td_date.setAttribute("scope", "row")
+            td_date.setAttribute("data-label", "Date")
+            td_date.innerHTML = betDate.toISOString().split('T')[0]
+            tr.appendChild(td_date)
+
+            let td_question = document.createElement("td")
+            td_question.setAttribute("scope", "row")
+            td_question.setAttribute("data-label", "Question")
+            td_question.innerHTML = f.fields['Question (from carddata)']
+            tr.appendChild(td_question)
+            
+
+            let td_yn = document.createElement("td")
+            td_yn.setAttribute("scope", "row")
+            td_yn.setAttribute("data-label", "Y/N")
+
+            let td_yn_box = document.createElement("div")
+
+            if (f.fields['Closing Date (from Linked Betting Line ID)'] && f.fields['Closing Date (from Linked Betting Line ID)'][0] && f.fields.Category === "winnings") {
+                td_yn_box.setAttribute("style", "background:#00b300 !important;font-weight: bold !important;font-weight: bold !important;height: 100% !important;display: flex !important;width: 100% !important;justify-content: center !important;")
+            }
+
+            if (f.fields['Closing Date (from Linked Betting Line ID)'] && f.fields['Closing Date (from Linked Betting Line ID)'][0] && f.fields.Category === "winnings") {
+                td_yn_box.setAttribute("style", "background:#00b300 !important;font-weight: bold !important;font-weight: bold;height: 100%;display: flex;width: 100%;justify-content: center;")
+            }
+
+            else if (f.fields['Closing Date (from Linked Betting Line ID)'] && f.fields['Closing Date (from Linked Betting Line ID)'][0] && f.fields.Category !== "winnings")  {
+                td_yn_box.setAttribute("style", "background:#FF0000;font-weight: bold;font-weight: bold;height: 100%;display: flex;width: 100%;justify-content: center;")
+            }
+  
+            else if (!f.fields['Closing Date (from Linked Betting Line ID)'] || f.fields.Category !== "winnings" ) {
+                td_yn_box.setAttribute("style", "background:#EBEBE4;font-weight: bold;font-weight: bold;height: 100%;display: flex;width: 100%;justify-content: center;")
+            }
+
+            let td_yn_box_text = document.createElement("p")
+
+            if (f.fields.Choice && (f.fields.Choice === true || f.fields.Choice === "true")) {
+                td_yn_box_text.innerHTML = 'YES' 
+            }
+
+            else {
+                td_yn_box_text.innerHTML = ' NO' 
+            }
+
+            tr.appendChild(td_yn)
+            td_yn.appendChild(td_yn_box)
+            td_yn_box.appendChild(td_yn_box_text)
+
+            let td_points = document.createElement("td")
+            td_points.setAttribute("scope", "row")
+            td_points.setAttribute("data-label", "Points")
+            td_points.innerHTML = f.fields.Value
+            tr.appendChild(td_points)
+
+            let td_balance = document.createElement("td")
+            td_balance.setAttribute("scope", "row")
+            td_balance.setAttribute("data-label", "Balance")
+            td_balance.innerHTML = "1000"
+            tr.appendChild(td_balance)
+         
+        })
+    })
+.catch(error => {
+  console.log(error)
+});
+
+
+    </script>
+  </table>
