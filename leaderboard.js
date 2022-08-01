@@ -1,5 +1,5 @@
 const list = document.getElementsByClassName("scroll-table-content")[0]
-fetch('https://api.airtable.com/v0/appzvtjAGocJzOExM/Member.Leadersboard', {
+fetch('https://api.airtable.com/v0/appzvtjAGocJzOExM/Member.Leadersboard?filterByForumula=view=viwkTTQxQdjeaqSF6', {
     headers: {
         Authorization: 'Bearer keyzsJA5PVzv64Oem'
     }
