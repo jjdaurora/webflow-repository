@@ -59,7 +59,7 @@ fetch('https://api.airtable.com/v0/appzvtjAGocJzOExM/Member.Leadersboard', {
         row.appendChild(tableBoxDate)
         let date = document.createElement("div")
         date.setAttribute("class", "table-data")
-        date.innerHTML = record.fields['Date Joined']
+        date.innerHTML = record.fields['Date Joined'] || ""
         tableBoxDate.appendChild(date)
         
     })
