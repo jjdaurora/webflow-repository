@@ -56,6 +56,8 @@ fetch(
                 td_yn_box.setAttribute("style", "background:#EBEBE4;font-weight: bold;font-weight: bold;height: 100%;display: flex;width: 100%;justify-content: center;")
             }
 
+            td_yn_box.setAttribute("class", "yes_no_box")
+
             let td_yn_box_text = document.createElement("p")
 
             if (f.fields.Choice && (f.fields.Choice === true || f.fields.Choice === "true")) {
