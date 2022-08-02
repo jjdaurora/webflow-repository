@@ -41,19 +41,19 @@ fetch(
             let td_yn_box = document.createElement("div")
 
             if (f.fields['Closing Date (from Linked Betting Line ID)'] && f.fields['Closing Date (from Linked Betting Line ID)'][0] && f.fields.Category === "winnings") {
-                td_yn_box.setAttribute("style", "background:#00b300 !important;font-weight: bold !important;font-weight: bold !important;height: 100% !important;display: flex !important;width: 100% !important;justify-content: center !important;")
+                td_yn_box.setAttribute("style", "background:#00b300 !important;font-weight: bold !important;font-weight: bold !important;height: 100% !important;width: 100% !important;justify-content: center !important;")
             }
 
             if (f.fields['Closing Date (from Linked Betting Line ID)'] && f.fields['Closing Date (from Linked Betting Line ID)'][0] && f.fields.Category === "winnings") {
-                td_yn_box.setAttribute("style", "background:#00b300 !important;font-weight: bold !important;font-weight: bold;height: 100%;display: flex;width: 100%;justify-content: center;")
+                td_yn_box.setAttribute("style", "background:#00b300 !important;font-weight: bold !important;font-weight: bold;height: 100%;width: 100%;justify-content: center;")
             }
 
             else if (f.fields['Closing Date (from Linked Betting Line ID)'] && f.fields['Closing Date (from Linked Betting Line ID)'][0] && f.fields.Category !== "winnings")  {
-                td_yn_box.setAttribute("style", "background:#FF0000;font-weight: bold;font-weight: bold;height: 100%;display: flex;width: 100%;justify-content: center;")
+                td_yn_box.setAttribute("style", "background:#FF0000;font-weight: bold;font-weight: bold;height: 100%;width: 100%;justify-content: center;")
             }
   
             else if (!f.fields['Closing Date (from Linked Betting Line ID)'] || f.fields.Category !== "winnings" ) {
-                td_yn_box.setAttribute("style", "background:#EBEBE4;font-weight: bold;font-weight: bold;height: 100%;display: flex;width: 100%;justify-content: center;")
+                td_yn_box.setAttribute("style", "background:#EBEBE4;font-weight: bold;font-weight: bold;height: 100%;width: 100%;justify-content: center;")
             }
 
             td_yn_box.setAttribute("class", "yes_no_box")
