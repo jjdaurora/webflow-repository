@@ -36,6 +36,7 @@ fetch(
             let td_yn = document.createElement("td")
             td_yn.setAttribute("scope", "row")
             td_yn.setAttribute("data-label", "Y/N")
+            td_yn.setAttribute("class", "yes_no_row")
 
             let td_yn_box = document.createElement("div")
 

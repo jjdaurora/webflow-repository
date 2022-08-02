@@ -35,7 +35,17 @@ table {
     display:  contents !important;
   }
   
+  .yes_no_box {
+    display: flex;
+  }
+
+
   @media screen and (max-width: 600px) {
+
+    .yes_no_box {
+      display: inline;
+    }
+
     table {
       border: 0 !important;
     }
