@@ -13,7 +13,7 @@ fetch(
             balance += f.fields.Value
             let tr = document.createElement("tr")
 
-            table.prepend(tr)
+            table.appendChild(tr)
 
             let betDate = new Date(f.fields['Selection Date'])
             betDate.toISOString().split('T')[0]
