@@ -29,7 +29,7 @@ fetch(
             let td_question = document.createElement("td")
             td_question.setAttribute("scope", "row")
             td_question.setAttribute("data-label", "Question")
-            td_question.innerHTML = f.fields['Question (from carddata)'] || ""
+            td_question.innerHTML = f.fields['Question (from carddata)'] || "N/A"
             tr.appendChild(td_question)
             
 
