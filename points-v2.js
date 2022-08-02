@@ -59,6 +59,7 @@ fetch(
             td_yn_box.setAttribute("class", "yes_no_box")
 
             let td_yn_box_text = document.createElement("p")
+            td_yn_box_text.setAttribute("style", "margin: 0 !important")
 
             if (f.fields.Choice && (f.fields.Choice === true || f.fields.Choice === "true")) {
                 td_yn_box_text.innerHTML = 'YES' 
