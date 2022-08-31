@@ -141,6 +141,9 @@ fetch('https://api.airtable.com/v0/appzvtjAGocJzOExM/Member.Bets?filterByFormula
 							}
 						})
 					}
+
+					$(this).children().each(function(index) {
+
 					if ($(this).hasClass("jetboost-toggle-favorite-k6rr")) {
 						$(this).children().each(function(index) {
 							if ($(this).hasClass("item-is-not-favorite2")) {
@@ -152,6 +155,7 @@ fetch('https://api.airtable.com/v0/appzvtjAGocJzOExM/Member.Bets?filterByFormula
 							}
 						})
 					}
-			
+					})
+					
 				})
 			});
