@@ -34,7 +34,7 @@ fetch('https://api.airtable.com/v0/appzvtjAGocJzOExM/Member.Leadersboard?view=vi
         img.setAttribute("src", "https://via.placeholder.com/150")
         let name = document.createElement("div")
         name.setAttribute("class", "table-data name")
-        name.innerHTML = record.fields.Name
+        name.innerHTML = record.fields['Display Name (from Membership.Signups)']
         tableBoxName.appendChild(img)
         tableBoxName.appendChild(name)
 
@@ -67,4 +67,3 @@ fetch('https://api.airtable.com/v0/appzvtjAGocJzOExM/Member.Leadersboard?view=vi
 .catch(error => {
     console.error('Error:', error);
 });
-
