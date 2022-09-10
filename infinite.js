@@ -62,13 +62,14 @@ function wagerAlreadyPlaced() {
 $('.popup-close-btn_1').click(function() { togglePopup(false); $('.confirm_button_yes, .confirm_button_no').unbind() })
 $('.popup-close-btn_2').click(function() { togglePopup(true); $('.confirm_button_yes, .confirm_button_no').unbind() })
 $('.popup-close-btn_3').click(function() { wagerAlreadyPlaced()})
-$(".button-3, .button-5").click(function() {
+$(".button-3, .button-5, .text-block-94, .text-block-93").click(function() {
      article_id = $(this).text()
      choice = true ? $(this).hasClass("button-3") : false
      value = -Math.abs($('.idtext[data-bind='+ JSON.stringify($(this)[0].dataset.bind) + ']').text())
   if (JSON.parse($('.idtext[data-bind='+ JSON.stringify( $(this)[0].dataset.bind ) + ']').text()) <= JSON.parse(document.getElementById("txtNumber").value)) {
      togglePopup( true, value )
     if ($(this).hasClass("button-3")) {
+        $('.wager_button').addClass("confirm_button_yes")
         $('.wager_button').addClass("confirm_button_yes")
     }
     else if ($(this).hasClass("button-5")) {
@@ -281,8 +282,7 @@ console.log(wrong)
     }
   } );
     });
-   function change(value){
+  function change(value){
    document.getElementById("count").value= 1*value;
    document.getElementById("totalValue").innerHTML= 20*value;
-     }
- 
+  }
