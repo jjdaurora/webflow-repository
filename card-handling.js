@@ -67,7 +67,7 @@ fetch('https://api.airtable.com/v0/appzvtjAGocJzOExM/Member.Bets?filterByFormula
 			$('.popup-close-btn_3').click(function() {
 				wagerAlreadyPlaced()
 			})
-			$(".button-3, .button-5").click(function() {
+			$(".button-3, .button-5, .text-block-94, .text-block-93").click(function() {
 				article_id = $(this).text()
 				choice = true ? $(this).hasClass("button-3") : false
 				value = -Math.abs($('.text-block-80[data-bind=' + JSON.stringify($(this)[0].dataset.bind) + ']').text())
@@ -136,6 +136,7 @@ fetch('https://api.airtable.com/v0/appzvtjAGocJzOExM/Member.Bets?filterByFormula
 								$(this).children().each(function(index) {
 									if ($(this).hasClass("button-3")) {
 										$(this).attr("data-bind", rando)
+                                        $(this).next().attr("data-bind", rando)
 									}
 								})
 							}
@@ -150,6 +151,7 @@ fetch('https://api.airtable.com/v0/appzvtjAGocJzOExM/Member.Bets?filterByFormula
 								$(this).children().each(function(index) {
 									if ($(this).hasClass("button-5")) {
 										$(this).attr("data-bind", rando)
+                                        $(this).next().attr("data-bind", rando)
 									}
 								})
 							}
