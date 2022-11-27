@@ -35,7 +35,6 @@ fetch('https://api.airtable.com/v0/appzvtjAGocJzOExM/Member.Leadersboard?view=vi
         let name = document.createElement("div")
         name.setAttribute("class", "table-data name")
         name.innerHTML = record.fields['Display Name (from Membership.Signups)']
-        tableBoxName.appendChild(img)
         tableBoxName.appendChild(name)
 
         let tableBoxBalance = document.createElement("div")
