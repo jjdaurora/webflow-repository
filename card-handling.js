@@ -68,7 +68,7 @@ fetch('https://api.airtable.com/v0/appzvtjAGocJzOExM/Member.Bets?filterByFormula
 				wagerAlreadyPlaced()
 			})
 			$(".button-3, .button-5, .text-block-94, .text-block-93").click(function() {
-				article_id = $(this).text()
+				article_id = isNaN($(this).text()) ? $(this).prev().text() : $(this).text();
 				choice = true ? $(this).hasClass("button-3") : false
 				value = -Math.abs($('.text-block-80[data-bind=' + JSON.stringify($(this)[0].dataset.bind) + ']').text())
 				if (JSON.parse($('.text-block-80[data-bind=' + JSON.stringify($(this)[0].dataset.bind) + ']').text()) <= JSON.parse(document.getElementById("txtNumber").value)) {
